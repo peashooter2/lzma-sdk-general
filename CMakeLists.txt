@@ -7,6 +7,7 @@ add_library(7zip)
 
 # Check makefile in srcdir/CPP/7zip/Archive/7z/makefile
 target_sources(7zip PRIVATE
+    # COMPRESS_OBJS
     CPP/7zip/Compress/Bcj2Coder.cpp
     CPP/7zip/Compress/Bcj2Register.cpp
     CPP/7zip/Compress/BcjCoder.cpp
@@ -14,7 +15,6 @@ target_sources(7zip PRIVATE
     CPP/7zip/Compress/BranchMisc.cpp
     CPP/7zip/Compress/BranchRegister.cpp
     CPP/7zip/Compress/ByteSwap.cpp
-    CPP/7zip/Compress/CodecExports.cpp
     CPP/7zip/Compress/CopyCoder.cpp
     CPP/7zip/Compress/CopyRegister.cpp
     CPP/7zip/Compress/DeltaFilter.cpp
@@ -30,12 +30,14 @@ target_sources(7zip PRIVATE
     CPP/7zip/Compress/XzDecoder.cpp
     CPP/7zip/Compress/XzEncoder.cpp
 
+    # CRYPTO_OBJS
     CPP/7zip/Crypto/7zAes.cpp
     CPP/7zip/Crypto/7zAesRegister.cpp
     CPP/7zip/Crypto/MyAes.cpp
     CPP/7zip/Crypto/MyAesReg.cpp
     CPP/7zip/Crypto/RandGen.cpp
 
+    # C_OBJS
     C/7zBuf2.c
     C/7zStream.c
     C/Alloc.c
@@ -75,6 +77,7 @@ target_sources(7zip PRIVATE
     C/XzCrc64.c
     C/XzCrc64Opt.c
 
+    # COMMON_OBJS
     CPP/Common/CRC.cpp
     CPP/Common/CrcReg.cpp
     CPP/Common/DynLimBuf.cpp
@@ -82,7 +85,6 @@ target_sources(7zip PRIVATE
     CPP/Common/LzFindPrepare.cpp
     CPP/Common/MyString.cpp
     CPP/Common/MyVector.cpp
-    CPP/Common/MyWindows.cpp
     CPP/Common/NewHandler.cpp
     CPP/Common/Sha256Prepare.cpp
     CPP/Common/Sha256Reg.cpp
@@ -93,6 +95,7 @@ target_sources(7zip PRIVATE
     CPP/Common/XzCrc64Init.cpp
     CPP/Common/XzCrc64Reg.cpp
 
+    # 7ZIP_COMMON_OBJS
     CPP/7zip/Common/CreateCoder.cpp
     CPP/7zip/Common/CWrappers.cpp
     CPP/7zip/Common/InBuffer.cpp
@@ -112,21 +115,23 @@ target_sources(7zip PRIVATE
     CPP/7zip/Common/UniqBlocks.cpp
     CPP/7zip/Common/VirtThread.cpp
 
+    # WIN_OBJS
     CPP/Windows/FileDir.cpp
     CPP/Windows/FileFind.cpp
     CPP/Windows/FileIO.cpp
     CPP/Windows/FileName.cpp
     CPP/Windows/PropVariant.cpp
+    CPP/Windows/PropVariantConv.cpp
     CPP/Windows/Synchronization.cpp
     CPP/Windows/System.cpp
     CPP/Windows/TimeUtils.cpp
 
+    # AR_OBJS
     CPP/7zip/Archive/LzmaHandler.cpp
     CPP/7zip/Archive/SplitHandler.cpp
     CPP/7zip/Archive/XzHandler.cpp
-    CPP/7zip/Archive/ArchiveExports.cpp
-    CPP/7zip/Archive/DllExports2.cpp
 
+    # AR_COMMON_OBJS
     CPP/7zip/Archive/Common/CoderMixer2.cpp
     CPP/7zip/Archive/Common/DummyOutStream.cpp
     CPP/7zip/Archive/Common/InStreamWithCRC.cpp
@@ -136,6 +141,7 @@ target_sources(7zip PRIVATE
     CPP/7zip/Archive/Common/HandlerOut.cpp
     CPP/7zip/Archive/Common/ParseProperties.cpp
 
+    # 7Z_OBJS
     CPP/7zip/Archive/7z/7zCompressionMode.cpp
     CPP/7zip/Archive/7z/7zDecode.cpp
     CPP/7zip/Archive/7z/7zEncode.cpp
@@ -150,17 +156,36 @@ target_sources(7zip PRIVATE
     CPP/7zip/Archive/7z/7zSpecStream.cpp
     CPP/7zip/Archive/7z/7zUpdate.cpp
     CPP/7zip/Archive/7z/7zRegister.cpp
-
-    CPP/7zip/Archive/Archive2.def
 )
 
-target_compile_definitions(7zip
-    PUBLIC
-        -D_REENTRANT
-        -D_FILE_OFFSET_BITS=64
-        -D_LARGEFILE_SOURCE
-        -DEXTERNAL_CODECS
-        -D_7ZIP_LARGE_PAGES
-        -DUNICODE
-        -D_UNICODE
+# CPP/7zip/Bundles/Format7zF/makefile[_gcc].mak
+# CPP/7zip/7zip[_gcc].mak
+
+target_compile_definitions(7zip PRIVATE Z7_EXTERNAL_CODECS)
+target_sources(7zip PRIVATE
+    CPP/7zip/Archive/ArchiveExports.cpp
+    CPP/7zip/Archive/DllExports2.cpp
+    CPP/7zip/Compress/CodecExports.cpp
 )
+if(WIN32)
+    target_compile_definitions(7zip
+        PUBLIC
+            -DUNICODE
+            -D_UNICODE
+    )
+    target_sources(7zip PRIVATE
+        CPP/7zip/Archive/Archive2.def
+    )
+else()
+    target_sources(7zip PRIVATE
+        CPP/Common/MyWindows.cpp
+    )
+endif()
+if(NOT MSVC)
+    target_compile_definitions(7zip
+        PUBLIC
+            -D_REENTRANT
+            -D_FILE_OFFSET_BITS=64
+            -D_LARGEFILE_SOURCE
+    )
+endif()

@@ -110,6 +110,7 @@ LOCAL_SRC_FILES := \
     CPP/Windows/FileIO.cpp \
     CPP/Windows/FileName.cpp \
     CPP/Windows/PropVariant.cpp \
+    CPP/Windows/PropVariantConv.cpp \
     CPP/Windows/Synchronization.cpp \
     CPP/Windows/System.cpp \
     CPP/Windows/TimeUtils.cpp \
