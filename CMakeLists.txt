@@ -5,7 +5,8 @@ set(CMAKE_SUPPRESS_REGENERATION true)
 
 add_library(7zip)
 
-# Check makefile in srcdir/CPP/7zip/Archive/7z/makefile
+# CPP/7zip/Bundles/Format7zF/Arc[_gcc].mak
+
 target_sources(7zip PRIVATE
     # COMPRESS_OBJS
     CPP/7zip/Compress/Bcj2Coder.cpp
