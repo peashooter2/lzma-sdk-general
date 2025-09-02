@@ -1,2 +1,5 @@
 repo.bat
 reconfig.*
+build/*
+libs/*
+obj/*

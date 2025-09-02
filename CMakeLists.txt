@@ -39,6 +39,7 @@ target_sources(7zip PRIVATE
     CPP/7zip/Crypto/RandGen.cpp
 
     # C_OBJS
+    C/7zBuf2.c
     C/7zStream.c
     C/Alloc.c
     C/Bcj2.c
