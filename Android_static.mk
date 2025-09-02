@@ -32,7 +32,6 @@ LOCAL_SRC_FILES := \
     CPP/7zip/Crypto/MyAes.cpp \
     CPP/7zip/Crypto/MyAesReg.cpp \
     CPP/7zip/Crypto/RandGen.cpp \
-    C/7zBuf2.c \
     C/7zStream.c \
     C/Alloc.c \
     C/Bcj2.c \
