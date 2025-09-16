@@ -7,7 +7,6 @@
 #include "../../../Common/Wildcard.h"
 
 #include "../Common/ItemNameUtils.h"
-#include "../Common/ParseProperties.h"
 
 #include "7zHandler.h"
 #include "7zOut.h"

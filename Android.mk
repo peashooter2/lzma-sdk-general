@@ -39,7 +39,6 @@ LOCAL_SRC_FILES := \
     C/Bcj2Enc.c \
     C/Bra.c \
     C/Bra86.c \
-    C/BraIA64.c \
     C/CpuArch.c \
     C/Delta.c \
     C/LzFind.c \
@@ -76,7 +75,6 @@ LOCAL_SRC_FILES := \
     CPP/Common/IntToString.cpp \
     CPP/Common/LzFindPrepare.cpp \
     CPP/Common/MyString.cpp \
-    CPP/Common/MyVector.cpp \
     CPP/Common/MyWindows.cpp \
     CPP/Common/NewHandler.cpp \
     CPP/Common/Sha256Prepare.cpp \
@@ -93,8 +91,6 @@ LOCAL_SRC_FILES := \
     CPP/7zip/Common/InOutTempBuffer.cpp \
     CPP/7zip/Common/FilterCoder.cpp \
     CPP/7zip/Common/LimitedStreams.cpp \
-    CPP/7zip/Common/LockedStream.cpp \
-    CPP/7zip/Common/MethodId.cpp \
     CPP/7zip/Common/MethodProps.cpp \
     CPP/7zip/Common/OffsetStream.cpp \
     CPP/7zip/Common/OutBuffer.cpp \
@@ -126,8 +122,6 @@ LOCAL_SRC_FILES := \
     CPP/7zip/Archive/Common/MultiStream.cpp \
     CPP/7zip/Archive/Common/OutStreamWithCRC.cpp \
     CPP/7zip/Archive/Common/HandlerOut.cpp \
-    CPP/7zip/Archive/Common/ParseProperties.cpp \
-    CPP/7zip/Archive/7z/7zCompressionMode.cpp \
     CPP/7zip/Archive/7z/7zDecode.cpp \
     CPP/7zip/Archive/7z/7zEncode.cpp \
     CPP/7zip/Archive/7z/7zExtract.cpp \
