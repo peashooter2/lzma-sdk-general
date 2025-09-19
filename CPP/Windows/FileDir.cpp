@@ -15,7 +15,6 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "../Common/C_FileIO.h"
 #include "../Common/MyBuffer2.h"
 #include "../Common/StringConvert.h"
 #endif
