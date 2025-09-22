@@ -12,7 +12,6 @@
 #include "../../Common/StreamObjects.h"
 
 #include "7zEncode.h"
-#include "7zSpecStream.h"
 
 namespace NArchive {
 namespace N7z {
