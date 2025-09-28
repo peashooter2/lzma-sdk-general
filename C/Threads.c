@@ -38,7 +38,7 @@ WRes Handle_WaitObject(HANDLE h)
     (dw) result:
     WAIT_OBJECT_0  // 0
     WAIT_ABANDONED // 0x00000080 : is not compatible with Win32 Error space
-    WAIT_TIMEOUT   // 0x00000102 : is     compatible with Win32 Error space
+    WAIT_TIMEOUT   // 0x00000102 : is compatible with Win32 Error space
     WAIT_FAILED    // 0xFFFFFFFF
   */
   if (dw == WAIT_FAILED)
