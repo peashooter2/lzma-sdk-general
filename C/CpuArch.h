@@ -416,14 +416,18 @@ MY_CPU_64BIT means that processor can work with 64-bit registers.
 #endif
 
 
-
+// Disable MY_CPU_LE_UNALIGN. Although the underlying ISA may be able to load
+// unaligned words, doing so via pointer casts is undefined behavior in C and
+// C++, under both strict aliasing and because it is invalid to construct
+// unaligned pointers. Instead, load the bytes generically and leave optimizing
+// this to the compiler.
 #ifdef MY_CPU_LE
   #if defined(MY_CPU_X86_OR_AMD64) \
       || defined(MY_CPU_ARM64) \
       || defined(MY_CPU_RISCV) && defined(__riscv_misaligned_fast) \
       || defined(MY_CPU_E2K) && defined(__iset__) && (__iset__ >= 6)
-    #define MY_CPU_LE_UNALIGN
-    #define MY_CPU_LE_UNALIGN_64
+    // #define MY_CPU_LE_UNALIGN
+    // #define MY_CPU_LE_UNALIGN_64
   #elif defined(__ARM_FEATURE_UNALIGNED)
 /* === ALIGNMENT on 32-bit arm and LDRD/STRD/LDM/STM instructions.
   Description of problems:
