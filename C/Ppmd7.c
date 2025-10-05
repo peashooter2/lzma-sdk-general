@@ -104,7 +104,7 @@ BoolInt Ppmd7_Alloc(CPpmd7 *p, UInt32 size, ISzAllocPtr alloc)
 
 
 
-// ---------- Internal Memory Allocator ----------
+/* ---------- Internal Memory Allocator ---------- */
 
 /* We can use CPpmd7_Node in list of free units (as in Ppmd8)
    But we still need one additional list walk pass in Ppmd7_GlueFreeBlocks().
